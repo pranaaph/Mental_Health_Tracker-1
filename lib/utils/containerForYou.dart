@@ -2,12 +2,17 @@
 
 import 'package:flutter/material.dart';
 import 'package:mental_health_app/constant.dart';
+import 'package:mental_health_app/screen/DoctorPage/doctor_main_page.dart';
 
 class ContainerHomePage extends StatelessWidget {
   final String imgAssert;
   final String boxName;
+  final Widget page;
   const ContainerHomePage(
-      {super.key, required this.imgAssert, required this.boxName});
+      {super.key,
+      required this.imgAssert,
+      required this.boxName,
+      required this.page});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +20,9 @@ class ContainerHomePage extends StatelessWidget {
         height: 120,
         width: 300,
         child: ElevatedButton(
-          onPressed: () {},
+          onPressed: () {
+            _navigateToScreen(context);
+          },
           style: ElevatedButton.styleFrom(
               padding: EdgeInsets.symmetric(horizontal: 10.0, vertical: 20.0),
               shape: RoundedRectangleBorder(
@@ -39,5 +46,9 @@ class ContainerHomePage extends StatelessWidget {
             ],
           ),
         ));
+  }
+
+  void _navigateToScreen(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => page));
   }
 }

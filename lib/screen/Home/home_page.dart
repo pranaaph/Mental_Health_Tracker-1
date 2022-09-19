@@ -3,19 +3,21 @@
 import 'package:flutter/material.dart';
 import 'package:mental_health_app/constant.dart';
 import 'package:intl/intl.dart';
+import 'package:mental_health_app/screen/DoctorPage/doctor_main_page.dart';
+import 'package:mental_health_app/screen/MusicPage/music_main_page.dart';
 import 'package:mental_health_app/utils/containerForYou.dart';
 import 'package:mental_health_app/utils/emoticon.dart';
+import 'package:mental_health_app/utils/navBar.dart';
 import 'package:mental_health_app/utils/sizedBoxHeight.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+  const HomePage({super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
 }
 
 class _HomePageState extends State<HomePage> {
-  String date = DateFormat.yMMMEd().format(DateTime.now());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -123,6 +125,7 @@ class _HomePageState extends State<HomePage> {
                 ContainerHomePage(
                   boxName: 'Assess You',
                   imgAssert: heartImage,
+                  page: MusicPage(),
                 ),
                 SizedBox(
                   height: 20,
@@ -130,12 +133,14 @@ class _HomePageState extends State<HomePage> {
                 ContainerHomePage(
                   boxName: 'Todays Practice',
                   imgAssert: meditationIcon,
+                  page: DoctorPage(),
                 ),
               ],
             ),
           ]),
         ),
       ),
+      // bottomNavigationBar: MainNavBar(),
     );
   }
 }
